@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Request, Response, NextFunction } from 'express';
+import { StaticRouter } from "react-router-dom/server";
+import { Request, Response } from 'express';
 
 // import our main App component
 import App from '../../src/App';
@@ -8,9 +9,8 @@ import App from '../../src/App';
 const path = require('path');
 const fs = require('fs');
 
-export default (_req: Request, res: Response, _next: NextFunction) => {
+export default (req: Request, res: Response) => {
 
-  // point to the html file created by CRA's build tool
   const filePath = path.resolve(__dirname, '..', 'dist', 'index.html');
 
   fs.readFile(filePath, 'utf8', (err: any, htmlData: string) => {
@@ -19,10 +19,12 @@ export default (_req: Request, res: Response, _next: NextFunction) => {
       return res.status(404).end();
     }
 
-    // render the app as a string
-    const html: string = ReactDOMServer.renderToString(<App />);
+    const html: string = ReactDOMServer.renderToString(
+      <StaticRouter location={req.url}>
+        <App />
+      </StaticRouter>
+    );
 
-    // inject the rendered app into our html and send it
     return res.send(
       htmlData.replace(
         '<div id="root"></div>',
