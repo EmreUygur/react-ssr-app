@@ -9,7 +9,6 @@ const path = require('path');
 const fs = require('fs');
 
 export default (_req: Request, res: Response, _next: NextFunction) => {
-  console.log(_req);
 
   // point to the html file created by CRA's build tool
   const filePath = path.resolve(__dirname, '..', 'dist', 'index.html');
