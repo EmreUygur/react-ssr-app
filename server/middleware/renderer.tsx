@@ -17,10 +17,10 @@ export default (req: Request, res: Response) => {
     if (err) {
       console.error('err', err);
       return res.status(404).end();
-    }
+    }    
 
     const html: string = ReactDOMServer.renderToString(
-      <StaticRouter location={req.url}>
+      <StaticRouter location={req.originalUrl}>
         <App />
       </StaticRouter>
     );
