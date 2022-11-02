@@ -57,23 +57,6 @@ const client = {
     filename: 'client.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html',
-    }),
-  ],
-};
-
-const server = {
-  ...config,
-  name: 'server',
-  target: 'node',
-  entry: './server/bootstrap.ts',
-  output: {
-    filename: 'server.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-  externals: [nodeExternals()],
   devServer: {
     port: 3000,
     static: './dist',
@@ -81,4 +64,16 @@ const server = {
   },
 };
 
-module.exports = [client, server];
+const staticSiteGenerator = {
+  ...config,
+  name: 'static site generator',
+  target: 'node',
+  entry: './staticSiteGenerator/bootstrap.ts',
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, '.generator'),
+  },
+  externals: [nodeExternals()],
+};
+
+module.exports = [client, staticSiteGenerator];
