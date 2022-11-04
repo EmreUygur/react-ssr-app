@@ -1,10 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-
+import appRoutes from './router';
 import Navbar from './components/Navbar';
-
-import MainPage from './views/main';
-import AboutPage from './views/about';
 
 class App extends React.Component<{}, {}> {
   render() {
@@ -12,8 +9,9 @@ class App extends React.Component<{}, {}> {
       <>
         <Navbar />
         <Routes>
-          <Route path='/' element={<MainPage />} />
-          <Route path='/about' element={<AboutPage />} />
+          {appRoutes.map((route) => (
+            <Route path={route.path} element={<route.component />} />
+          ))}
         </Routes>
       </>
     );
