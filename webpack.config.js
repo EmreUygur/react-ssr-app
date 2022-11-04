@@ -56,6 +56,7 @@ const client = {
   output: {
     filename: 'client.js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   devServer: {
     port: 3000,
@@ -72,6 +73,7 @@ const staticSiteGenerator = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, '.generator'),
+    clean: true,
   },
   externals: [nodeExternals()],
 };
