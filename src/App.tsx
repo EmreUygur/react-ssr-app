@@ -9,8 +9,8 @@ class App extends React.Component<{}, {}> {
       <>
         <Navbar />
         <Routes>
-          {appRoutes.map((route) => (
-            <Route path={route.path} element={<route.component />} />
+          {appRoutes.map((route, idx) => (
+            <Route path={route.path} element={<route.component />} key={idx} />
           ))}
         </Routes>
       </>
