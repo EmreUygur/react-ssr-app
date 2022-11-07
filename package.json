@@ -27,7 +27,6 @@
     "babel-register": "^6.26.0",
     "core-js": "^3.26.0",
     "css-loader": "^6.7.1",
-    "html-webpack-plugin": "^5.5.0",
     "ignore-styles": "^5.0.1",
     "regenerator-runtime": "^0.13.10",
     "sass": "^1.55.0",
