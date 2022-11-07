@@ -24,8 +24,6 @@ appRoutes.forEach((route) => {
     fs.mkdirSync(filePath);
   }
 
-  console.log((filePath.match(new RegExp('/', 'g')) || []).length);
-
   fs.writeFile(
     `${distDir}${route.path}/index.html`,
     htmlObtainer({ content }),
